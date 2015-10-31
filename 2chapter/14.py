@@ -12,7 +12,7 @@ def main():
 
     with open("hightemp.txt", "r", encoding="utf-8") as f:
         for L in zip(f, range(n)):
-            print(L[0].strip())
+            print(L[0], end="")
 
 if __name__ == '__main__':
     main()
