@@ -17,3 +17,5 @@ def main():
 if __name__ == '__main__':
     main()
 
+# 動作確認
+# $ head hightemp.txt -n 2
