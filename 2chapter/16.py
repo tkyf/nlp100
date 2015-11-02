@@ -17,14 +17,14 @@ def main():
     if rows < N :
         N = rows
 
-    quota = list(reversed([(rows + i) // N for i in range(N)]))
+    quotas = list(reversed([(rows + i) // N for i in range(N)]))
 
     current = 0
-    for i in range(N):
+    for i, quota in enumerate(quotas):
         with open("split_{}.txt".format(i), "w", encoding="utf-8") as f:
-            for line in lines[current:quota[i] + current]:
+            for line in lines[current:quota + current]:
                 f.write(line)
-            current = current + quota[i]
+            current = current + quota
 
 
 if __name__ == '__main__':
