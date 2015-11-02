@@ -30,3 +30,5 @@ def main():
 if __name__ == '__main__':
     main()
 
+# 動作確認
+# $ split hightemp.txt -l $(expr $(wc -l hightemp.txt | cut -f 1 -d" ") / 5)
