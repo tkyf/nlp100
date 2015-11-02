@@ -17,20 +17,14 @@ def main():
     if rows < N :
         N = rows
 
-    result_files = []
+    quota = list(reversed([(rows + i) // N for i in range(N)]))
+
+    current = 0
     for i in range(N):
-        result_files.append(open("split_{}.txt".format(i), "w",
-            encoding="utf-8"))
-
-    i = 0
-    for line in lines:
-        result_files[i].write(line)
-        i = i + 1
-        i = i % N
-
-    for f in result_files:
-        f.close()
-
+        with open("split_{}.txt".format(i), "w", encoding="utf-8") as f:
+            for line in lines[current:quota[i] + current]:
+                f.write(line)
+            current = current + quota[i]
 
 
 if __name__ == '__main__':
