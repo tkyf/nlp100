@@ -17,5 +17,5 @@ if __name__ == '__main__':
     main()
 
 # 動作確認
-# $ sort hightemp.txt | cut -f1  | sort | uniq
+# $ cut -f1 hightemp.txt | sort | uniq
 
