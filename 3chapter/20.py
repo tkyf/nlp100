@@ -20,7 +20,7 @@ def main():
 
             # 以降の課題で使用するためファイルに出力しておく
             with open("england.json", "w", encoding="utf-8") as f:
-                json.dump(j, f)
+                json.dump(j, f, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':
     main()
