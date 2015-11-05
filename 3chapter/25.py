@@ -22,15 +22,13 @@ def main():
     info = m.group(1)
 
     # 全てのフィールドの行頭が|で始まっていることを利用する。
-    p_field = re.compile(r'^\|(.+?)\s+=\s+(((?!\n\|).)*)', re.DOTALL|re.MULTILINE)
+    p_field = re.compile(r'\n\|(.+?)\s+=\s+(((?!\n\|).)*)', re.DOTALL)
 
     m2 = p_field.findall(info)
     d = {}
     for p in m2:
+        print(p[0], p[1])
         d[p[0]] = p[1]
-
-    for k, v in d.items():
-        print(k, v)
 
 
 if __name__ == '__main__':
