@@ -30,7 +30,7 @@ def main():
 
     d = {}
     for p in m2:
-        s = p_remove_link.sub('', p[1])
+        s = p_remove_link.sub(r'\1', p[1])
         d[p[0]] = s
 
     for k, v in d.items():
