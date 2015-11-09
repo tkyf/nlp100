@@ -26,11 +26,13 @@ def main():
     m2 = p_field.findall(info)
 
 
+    p_de_emphasize = re.compile(r'\'{2,5}')
     p_remove_link = re.compile(r'\[\[(.*?)\]\]')
 
     d = {}
     for p in m2:
-        s = p_remove_link.sub(r'\1', p[1])
+        s = p_de_emphasize.sub('', p[1])
+        s = p_remove_link.sub(r'\1', s)
         d[p[0]] = s
 
     for k, v in d.items():
