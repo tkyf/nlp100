@@ -26,7 +26,7 @@ def main():
     m2 = p_field.findall(info)
 
 
-    p_deemphasize = re.compile(r'\'{2,5}')
+    p_deemphasize = re.compile(r'\'{2,3}|\'{5}')
 
     d = {}
     for p in m2:

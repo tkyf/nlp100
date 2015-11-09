@@ -26,7 +26,7 @@ def main():
     m2 = p_field.findall(info)
 
 
-    p_de_emphasize = re.compile(r'\'{2,5}')
+    p_de_emphasize = re.compile(r'\'{2,3}|\'{5}')
     p_remove_link = re.compile(r'\[\[(.*?)\]\]')
 
     d = {}
