@@ -35,7 +35,7 @@ def main():
         s = p_remove_link.sub(r'\1', s)
         d[p[0]] = s
 
-    for k, v in d.items():
+    for k, v in sorted(d.items()):
         print(k, v)
 
 
