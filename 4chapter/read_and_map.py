@@ -8,34 +8,34 @@ FILE = 'neko.txt.mecab'
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def main():
-    f = open(FILE, 'r', encoding='utf-8')
     text = []
-    sentence = []
-    for L in f:
-        line = L.strip()
-        if(line == 'EOS'):
-            if(sentence  != []):
-                text.append(sentence)
-                sentence = []
-            continue
+    with open(FILE, 'r', encoding='utf-8') as f:
+        sentence = []
+        for law_line in f:
+            line = law_line.strip()
+            if(line == 'EOS'):
+                if(sentence  != []):
+                    text.append(sentence)
+                    sentence = []
+                continue
 
-        if('\t' not in line):
-            surface = ''
-            feature = line
-        else:
-            surface, feature = line.split('\t')
+            if('\t' not in line):
+                surface = ''
+                feature = line
+            else:
+                surface, feature = line.split('\t')
 
-        features = feature.split(',')
-        pos = features[0]
-        pos1 = features[1]
-        base = features[6]
+            features = feature.split(',')
+            pos = features[0]
+            pos1 = features[1]
+            base = features[6]
 
-        morph = {}
-        morph['surface'] = surface
-        morph['pos'] = pos
-        morph['pos1'] = pos1
-        morph['base'] = base
-        sentence.append(morph)
+            morph = {}
+            morph['surface'] = surface
+            morph['pos'] = pos
+            morph['pos1'] = pos1
+            morph['base'] = base
+            sentence.append(morph)
 
     print(text)
     return
