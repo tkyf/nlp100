@@ -1,0 +1,45 @@
+#! /usr/bin/env python
+# -*- coding:utf-8 -*-
+
+import sys
+import io
+
+FILE = 'neko.txt.mecab'
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+def main():
+    f = open(FILE, 'r', encoding='utf-8')
+    text = []
+    sentence = []
+    for L in f:
+        line = L.strip()
+        if(line == 'EOS'):
+            if(sentence  != []):
+                text.append(sentence)
+                sentence = []
+            continue
+
+        if('\t' not in line):
+            surface = ''
+            feature = line
+        else:
+            surface, feature = line.split('\t')
+
+        features = feature.split(',')
+        pos = features[0]
+        pos1 = features[1]
+        base = features[6]
+
+        morph = {}
+        morph['surface'] = surface
+        morph['pos'] = pos
+        morph['pos1'] = pos1
+        morph['base'] = base
+        sentence.append(morph)
+
+    print(text)
+    return
+
+if __name__ == '__main__':
+    main()
+
