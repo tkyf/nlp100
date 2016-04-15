@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import sys
 import io
+import sys
 
 FILE = 'neko.txt.mecab'
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
