@@ -14,7 +14,7 @@ def main():
         for law_line in f:
             line = law_line.strip()
             if(line == 'EOS'):
-                if(sentence  != []):
+                if(sentence):
                     text.append(sentence)
                     sentence = []
                 continue
