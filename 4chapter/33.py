@@ -11,7 +11,7 @@ def main():
 
     text = neko.read_and_map()
     result = neko.pick(text, 'pos1', 'サ変接続')
-    print(result)
+    print(list(result))
 
     return
 

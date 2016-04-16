@@ -12,7 +12,7 @@ def main():
     text = neko.read_and_map()
     result = neko.pick(text, 'pos', '動詞', 'surface')
 
-    print(result )
+    print(list(result))
 
     return
 

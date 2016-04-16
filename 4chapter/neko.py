@@ -37,17 +37,15 @@ def read_and_map():
     return text
 
 def pick(text, key, cond=None, key2=None):
-    result = []
     for sentence in text:
         for word in sentence:
             val = word[key]
             if cond:
                 if val == cond:
                     if key2:
-                        result.append(word[key2])
+                        yield word[key2]
                     else:
-                        result.append(word)
+                        yield word
             else:
-                result.append(val)
-    return result
+                yield val
 
