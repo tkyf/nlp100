@@ -11,12 +11,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def main():
     text = neko.read_and_map()
-    result = defaultdict(int)
-    for sentence in text:
-        for word in sentence:
-            result[(word['base'], word['pos'])] += 1
-
-    result = sorted(result.items(), key=lambda x:x[1], reverse=True)
+    result = neko.frequency_list(text)
     print(result)
 
     return
