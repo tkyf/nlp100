@@ -10,13 +10,13 @@ def read_and_map():
         sentence = []
         for law_line in f:
             line = law_line.strip()
-            if(line == 'EOS'):
-                if(sentence):
+            if line == 'EOS':
+                if sentence:
                     text.append(sentence)
                     sentence = []
                 continue
 
-            if('\t' not in line):
+            if '\t' not in line:
                 surface = ''
                 feature = line
             else:
@@ -41,9 +41,9 @@ def pick(text, key, cond, key2):
     for sentence in text:
         for word in sentence:
             val = word[key]
-            if (cond):
-                if (val == cond):
-                    if(key2):
+            if cond:
+                if val == cond:
+                    if key2:
                         result.append(word[key2])
                     else:
                         result.append(word)
