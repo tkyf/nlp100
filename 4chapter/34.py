@@ -12,12 +12,11 @@ def main():
     text = neko.read_and_map()
     result = []
     for sentence in text:
-        while len(sentence) > 2 :
-            word1, word2, word3 = sentence[:3]
-            if word1['pos'] == '名詞' and \
+        if len(sentence) > 2 :
+            for word1, word2, word3 in zip(sentence, sentence[1:], sentence[2:]):
+                if word1['pos'] == '名詞' and \
                     word2['surface'] == 'の' and word3['pos'] == '名詞':
-                result.append((word1, word2, word3))
-            sentence.pop(0)
+                    result.append((word1, word2, word3))
     print(result)
 
     return
