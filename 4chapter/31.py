@@ -42,13 +42,13 @@ def read_and_map():
 
 def main():
     text = read_and_map()
-    base_of_verbs = []
+    surface_of_verbs = []
     for sentence in text:
         for word in sentence:
             pos = word['pos']
             if (pos == '動詞'):
-                base_of_verbs.append(word['base'])
-    print(base_of_verbs)
+                surface_of_verbs.append(word['surface'])
+    print(surface_of_verbs)
     return
 
 if __name__ == '__main__':
