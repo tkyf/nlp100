@@ -8,8 +8,7 @@ import neko
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-def main():
-    text = neko.read_and_map()
+def frequency(text):
     result = []
     for sentence in text:
         noun_junction = []
@@ -18,11 +17,15 @@ def main():
                 noun_junction.append(word['surface'])
             else:
                 if len(noun_junction) > 1:
-                    result.append("".join(noun_junction))
+                    yield "".join(noun_junction)
                 noun_junction = []
         if len(noun_junction) > 1 :
-            result.append("".join(noun_junction))
-    print(result)
+            yield "".join(noun_junction)
+
+def main():
+    text = neko.read_and_map()
+    result = frequency(text)
+    print(list(result))
 
     return
 

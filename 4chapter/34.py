@@ -8,16 +8,18 @@ import neko
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-def main():
-    text = neko.read_and_map()
-    result = []
+def a_no_b(text):
     for sentence in text:
         if len(sentence) > 2 :
             for word1, word2, word3 in zip(sentence, sentence[1:], sentence[2:]):
                 if word1['pos'] == '名詞' and \
                     word2['surface'] == 'の' and word3['pos'] == '名詞':
-                    result.append((word1, word2, word3))
-    print(result)
+                    yield  (word1, word2, word3)
+
+def main():
+    text = neko.read_and_map()
+    result = a_no_b(text)
+    print(list(result))
 
     return
 
