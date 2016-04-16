@@ -36,7 +36,7 @@ def read_and_map():
 
     return text
 
-def pick(text, key, cond, key2):
+def pick(text, key, cond=None, key2=None):
     result = []
     for sentence in text:
         for word in sentence:
