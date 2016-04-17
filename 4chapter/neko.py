@@ -84,3 +84,11 @@ def frequency_list(text):
             result[(word['base'], word['pos'])] += 1
 
     return sorted(result.items(), key=lambda x: x[1], reverse=True)
+
+
+def histogram(frequencies):
+    result = defaultdict(int)
+    for word in frequencies:
+        frequency = word[1]
+        result[frequency] += 1
+    return result
