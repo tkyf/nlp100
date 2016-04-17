@@ -1,9 +1,10 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+from collections import defaultdict
+
 FILE = 'neko.txt.mecab'
 
-from collections import defaultdict
 
 def read_and_map():
     text = []
@@ -29,7 +30,7 @@ def read_and_map():
             pos1 = features[1]
             base = features[6]
 
-            morph = {}
+            morph = dict()
             morph['surface'] = surface
             morph['pos'] = pos
             morph['pos1'] = pos1
@@ -37,6 +38,7 @@ def read_and_map():
             sentence.append(morph)
 
     return text
+
 
 def pick(text, key, cond=None, key2=None):
     for sentence in text:
@@ -51,13 +53,15 @@ def pick(text, key, cond=None, key2=None):
             else:
                 yield val
 
+
 def a_no_b(text):
     for sentence in text:
-        if len(sentence) > 2 :
+        if len(sentence) > 2:
             for word1, word2, word3 in zip(sentence, sentence[1:], sentence[2:]):
                 if word1['pos'] == '名詞' and \
-                    word2['surface'] == 'の' and word3['pos'] == '名詞':
-                    yield  (word1, word2, word3)
+                                word2['surface'] == 'の' and word3['pos'] == '名詞':
+                    yield (word1, word2, word3)
+
 
 def noun_junction(text):
     for sentence in text:
@@ -69,8 +73,9 @@ def noun_junction(text):
                 if len(noun_junction) > 1:
                     yield "".join(noun_junction)
                 noun_junction = []
-        if len(noun_junction) > 1 :
+        if len(noun_junction) > 1:
             yield "".join(noun_junction)
+
 
 def frequency_list(text):
     result = defaultdict(int)
@@ -78,6 +83,4 @@ def frequency_list(text):
         for word in sentence:
             result[(word['base'], word['pos'])] += 1
 
-    return sorted(result.items(), key=lambda x:x[1], reverse=True)
-
-
+    return sorted(result.items(), key=lambda x: x[1], reverse=True)
