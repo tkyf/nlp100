@@ -9,6 +9,7 @@ import neko
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
+
 def main():
     text = neko.read_and_map()
     result = neko.frequency_list(text)
@@ -18,4 +19,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

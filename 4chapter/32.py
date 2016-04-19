@@ -6,6 +6,7 @@ import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
+
 def main():
     import neko
 
@@ -17,4 +18,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
