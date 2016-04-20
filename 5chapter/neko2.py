@@ -18,6 +18,13 @@ class Morph:
         return self.__str__()
 
 
+class Chunk:
+    def __init__(self, morphs, dst, srcs):
+        self.morphs = morphs
+        self.dst = dst
+        self.srcs = srcs
+
+
 def read_and_make_morphs():
     text = []
     with open(FILE, 'r', encoding='utf-8') as f:
