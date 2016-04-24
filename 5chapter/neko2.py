@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
+from typing import List
 
-FILE = 'neko.txt.cabocha'
+FILE = '2sentence_neko.txt.cabocha'
 
 
 class Morph:
@@ -19,10 +20,32 @@ class Morph:
 
 
 class Chunk:
-    def __init__(self, morphs, dst, srcs):
-        self.morphs = morphs
+    def __init__(self, morphs: list = None, dst: int = None, srcs: List[int] = None):
+        """
+        :type srcs: List[int]
+        :rtype:Chunk
+        :param morphs:
+        :param dst:
+        :param srcs:
+        """
+        if morphs:
+            assert isinstance(srcs, List[Morph])
+            self.morphs = morphs
+        else:
+            self.morphs = []
         self.dst = dst
-        self.srcs = srcs
+
+        if srcs:
+            assert isinstance(srcs, List[int])
+            self.srcs = srcs
+        else:
+            self.srcs = []
+
+    def __str__(self):
+        return '\n{}({}, {})'.format(self.morphs, self.dst, self.srcs)
+
+    def __repr__(self):
+        return self.__str__()
 
 
 def read_and_make_morphs():
