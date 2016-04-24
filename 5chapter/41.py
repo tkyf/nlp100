@@ -10,10 +10,10 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
 def main():
-    chunks = read_and_make_chunks()
-    for chunk in chunks:
-        print(chunk)
-    return
+    sentences = read_and_make_chunks()
+    for chunks in sentences:
+        for chunk in chunks:
+            print(chunk)
 
 
 if __name__ == '__main__':
