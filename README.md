@@ -8,5 +8,5 @@
 環境：
 
 * Windows10 64bit
-* Python3.5.0
+* Python3.5.1
 
