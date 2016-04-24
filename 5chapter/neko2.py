@@ -47,6 +47,12 @@ class Chunk:
     def __repr__(self):
         return self.__str__()
 
+    def __contains__(self, pos: str):
+        for morph in self.morphs:
+            if morph.pos == pos:
+                return True
+        return False
+
 
 def read_and_make_morphs():
     text = []
