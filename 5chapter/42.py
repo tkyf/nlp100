@@ -27,7 +27,7 @@ def main():
                 dst_phrase = make_phrase_pair_exclude_symbols(chunks[chunk.dst].morphs)
             else:
                 dst_phrase = ''
-            print('{} -> {}'.format(src_phrase, dst_phrase))
+            print('{}\t{}'.format(src_phrase, dst_phrase))
 
 
 if __name__ == '__main__':
