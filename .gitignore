@@ -4,6 +4,6 @@ col1.txt
 col2.txt
 hightemp.txt
 neko.txt
-neko.txt.mecab
-neko.txt.cabocha
+*.mecab
+*.cabocha
 *.json
