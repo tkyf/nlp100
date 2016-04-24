@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 from typing import List
 
-FILE = '2sentence_neko.txt.cabocha'
+FILE = 'neko.txt.cabocha'
 
 
 class Morph:
