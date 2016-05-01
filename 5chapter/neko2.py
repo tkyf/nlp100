@@ -33,6 +33,7 @@ class Chunk:
             self.morphs = morphs
         else:
             self.morphs = []
+
         self.dst = dst
 
         if srcs:
@@ -52,6 +53,18 @@ class Chunk:
             if morph.pos == pos:
                 return True
         return False
+
+    def is_depending(self) -> bool:
+        return self.dst != -1
+
+    def is_blank(self) -> bool:
+        return len(self.morphs) == 1 and not self.morphs[0].surface
+
+    def surface(self) -> str:
+        surface = ''
+        for morph in self.morphs:
+            surface += morph.surface
+        return surface
 
 
 def read_and_make_morphs():
