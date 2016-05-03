@@ -3,30 +3,10 @@
 
 import io
 import sys
-from typing import List
 
-from neko2 import read_and_make_chunks, Chunk
+from neko2 import read_and_make_chunks, make_dot
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
-
-def make_dot(chunks: List[Chunk]):
-    """Chunkのリストから係り受け木を作成して返す。
-    係り受け木はDOT言語の有向グラフで表現する。
-    :param chunks: List[Chunk]
-    :rtype: str
-    """
-    nodes = []
-    edges = []
-    for i, chunk in enumerate(chunks):
-        if not chunk.is_blank():
-            nodes.append(str(i) + ' [label="' + chunk.surface() + '"];\n')
-            if chunk.is_depending():
-                edges.append(str(i) + '->' + str(chunk.dst) + ';\n')
-    head = 'digraph G ' + ' {\nnode[fontname="meiryo"];\nedge[fontname="meiryo"];\n'
-    body = ''.join(nodes) + ''.join(edges)
-    tail = '}'
-    return head + body + tail
 
 
 def main():
