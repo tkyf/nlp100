@@ -29,7 +29,7 @@ class Chunk:
         :param srcs:
         """
         if morphs:
-            assert isinstance(srcs, List[Morph])
+            assert isinstance(morphs, List[Morph])
             self.morphs = morphs
         else:
             self.morphs = []
@@ -121,6 +121,18 @@ def make_dot(chunks: List[Chunk]):
     body = ''.join(nodes) + ''.join(edges)
     tail = '}'
     return head + body + tail
+
+
+def extract_predicate_from_chunk(chunk: Chunk) -> str:
+    """動詞を含む文節から歳差の動詞の基本形を取り出し返す。
+    動詞を含まない場合は空文字を返す。
+    :param chunk: Chunk
+    :rtype: str
+    """
+    for morph in chunk.morphs:
+        if morph.pos == '動詞':
+            return morph.base
+    return ""
 
 
 def __read_and_make_sentences(file):
