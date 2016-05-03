@@ -10,14 +10,6 @@ from neko2 import read_and_make_chunks, Chunk
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
-def make_phrase_exclude_symbols(chunk: Chunk):
-    phrase = ''
-    for morph in chunk.morphs:
-        if morph.pos != '記号':
-            phrase += morph.surface
-    return phrase
-
-
 def make_dot(chunks: List[Chunk]):
     """Chunkのリストから係り受け木を作成して返す。
     係り受け木はDOT言語の有向グラフで表現する。
