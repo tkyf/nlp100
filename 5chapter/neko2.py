@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 from typing import List
 
-FILE = 'neko.txt.cabocha'
+FILE = '2sentence_neko.txt.cabocha'
 
 
 class Morph:
@@ -66,6 +66,23 @@ class Chunk:
             surface += morph.surface
         return surface
 
+    def extract_verb(self) -> str:
+        """与えられた文節から最左の動詞の基本形を取り出し返す。
+        動詞を含まない場合は空文字を返す。
+        :rtype: str
+        """
+        for morph in self.morphs:
+            if morph.pos == '動詞':
+                return morph.base
+        return ""
+
+    def extract_particles(self) -> List[str]:
+        """与えられた文節から助詞を全て取り出し返す。
+        助詞を含まない場合は空リストを返す。
+        :rtype: str
+        """
+        return [morph.surface for morph in self.morphs if morph.pos == '助詞']
+
 
 def read_and_make_morphs():
     text = []
@@ -123,16 +140,24 @@ def make_dot(chunks: List[Chunk]):
     return head + body + tail
 
 
-def extract_predicate_from_chunk(chunk: Chunk) -> str:
-    """与えられた文節から最左の動詞の基本形を取り出し返す。
-    動詞を含まない場合は空文字を返す。
-    :param chunk: Chunk
-    :rtype: str
+def extract_case_patterns(sentence: List[Chunk]) -> List[str]:
+    """文節のリストから述語と格の組を抽出し返す。
+    述語と格はタブ文字で区切る。
+    格が複数ある場合はスペースで区切る。
+    文節のリストに述語と格の組が存在しな場合は空リストを返す。
+    :param sentence: List[Chunk]
+    :rtype: List[str]
     """
-    for morph in chunk.morphs:
-        if morph.pos == '動詞':
-            return morph.base
-    return ""
+    case_patterns = []
+    for chunk in sentence:
+        predicate = chunk.extract_verb()
+        if predicate:
+            cases = []
+            for src in chunk.srcs:
+                cases.extend(sentence[src].extract_particles())
+            if cases:
+                case_patterns.append('\t'.join([predicate, ' '.join(cases)]))
+    return case_patterns
 
 
 def __read_and_make_sentences(file):
