@@ -124,7 +124,7 @@ def make_dot(chunks: List[Chunk]):
 
 
 def extract_predicate_from_chunk(chunk: Chunk) -> str:
-    """動詞を含む文節から歳差の動詞の基本形を取り出し返す。
+    """与えられた文節から最左の動詞の基本形を取り出し返す。
     動詞を含まない場合は空文字を返す。
     :param chunk: Chunk
     :rtype: str
