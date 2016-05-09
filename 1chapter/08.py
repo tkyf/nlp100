@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def cipher(text):
     ciphertext = []
 
@@ -12,6 +13,7 @@ def cipher(text):
 
     return ''.join(ciphertext)
 
+
 def main():
     message = "テストtestTEST!!??"
     encrypted_message = cipher(message)
@@ -21,4 +23,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

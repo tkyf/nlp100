@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import sys
 
@@ -15,7 +16,6 @@ def main():
 
     for L in lines:
         print(L, end="")
-
 
 
 if __name__ == '__main__':

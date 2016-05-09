@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     from collections import defaultdict
 
@@ -12,8 +13,9 @@ def main():
     for col1 in col1s:
         freq[col1] += 1
 
-    for k, v in sorted(freq.items(), key=lambda x:x[1], reverse=True):
+    for k, v in sorted(freq.items(), key=lambda x: x[1], reverse=True):
         print(k, v)
+
 
 if __name__ == '__main__':
     main()

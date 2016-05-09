@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import json
     import sys
@@ -22,6 +23,6 @@ def main():
             with open("england.json", "w", encoding="utf-8") as f:
                 json.dump(j, f, ensure_ascii=False, indent=4)
 
+
 if __name__ == '__main__':
     main()
-

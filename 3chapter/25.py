@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import sys
     import io
@@ -33,4 +34,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import sys
     import io
@@ -19,11 +20,11 @@ def main():
     for L in text.split("\n"):
         m = p.search(L)
         if m:
-            depth = len(m.group(1)) 
-            print(depth , end=" ")
+            depth = len(m.group(1))
+            print(depth, end=" ")
             # 閉じタグの=を取り除いて表示する
             print(m.group(2)[:-depth])
 
+
 if __name__ == '__main__':
     main()
-

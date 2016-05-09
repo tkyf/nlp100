@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import sys
 
@@ -14,7 +15,7 @@ def main():
         lines = f.readlines()
 
     rows = len(lines)
-    if rows < N :
+    if rows < N:
         N = rows
 
     quotas = list(reversed([(rows + i) // N for i in range(N)]))

@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
-def main():
 
+def main():
     kind_of_strings = set()
 
     with open("hightemp.txt", "r", encoding="utf-8") as f:
@@ -18,4 +18,3 @@ if __name__ == '__main__':
 
 # 動作確認
 # $ cut -f1 hightemp.txt | sort | uniq
-

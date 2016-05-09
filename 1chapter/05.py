@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import ngram
 
@@ -12,6 +13,6 @@ def main():
     print(word_2gram)
     print(char_2gram)
 
+
 if __name__ == '__main__':
     main()
-

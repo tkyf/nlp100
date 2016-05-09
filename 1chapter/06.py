@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import ngram
     sentecne1 = 'paraparaparadise'
@@ -23,6 +24,6 @@ def main():
     else:
         print("'se' is not in X and Y")
 
+
 if __name__ == '__main__':
     main()
-

@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import sys
     import io
@@ -25,7 +26,6 @@ def main():
     p_field = re.compile(r'\n\|(.+?)\s+=\s+(((?!\n\|).)*)', re.DOTALL)
     m2 = p_field.findall(info)
 
-
     p_deemphasize = re.compile(r'\'{2,3}|\'{5}')
 
     d = {}
@@ -39,4 +39,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

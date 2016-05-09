@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import sys
     import io
@@ -47,7 +48,6 @@ def main():
     endpoint = 'https://en.wikipedia.org/w/api.php'
     query = '?action=query&titles=File:' + flag_filename + '&prop=imageinfo&iiprop=url&format=json'
 
-
     res = urllib.request.urlopen(endpoint + query)
     str_res = res.read().decode('utf-8')
     json_res = json.loads(str_res)
@@ -62,4 +62,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

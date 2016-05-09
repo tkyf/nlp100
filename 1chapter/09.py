@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def typoglycemia(word):
     import random
 
@@ -14,8 +15,6 @@ def typoglycemia(word):
     return word[0] + shuffled_sequence + word[-1]
 
 
-
-
 def main():
     print(typoglycemia("word"))
 
@@ -26,6 +25,6 @@ def main():
         shuffled_sentence.append(typoglycemia(word))
     print(' '.join(shuffled_sentence))
 
+
 if __name__ == '__main__':
     main()
-

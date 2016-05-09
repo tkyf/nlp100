@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 def main():
     import sys
     import io
@@ -20,6 +21,6 @@ def main():
         if p.match(L):
             print(L)
 
+
 if __name__ == '__main__':
     main()
-
