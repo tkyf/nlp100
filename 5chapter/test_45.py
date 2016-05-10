@@ -31,5 +31,28 @@ class TestExtractPredicate(unittest.TestCase):
         predicate = Chunk(morphs).extract_verb()
         self.assertEqual(predicate, 'する')
 
+
+class TestExtractParticles(unittest.TestCase):
+    def test_no_particles_in_phrase(self):
+        morphs = [Morph(surface='見た', base='見る', pos='動詞', pos1='自立'),
+                  Morph(surface='た', base='た', pos='助動詞', pos1='*')]
+        particles = Chunk(morphs).extract_particles()
+        self.assertEqual(particles, [])
+
+    def test_one_particle_in_phrase(self):
+        morphs = [Morph(surface='生れ', base='生れる', pos='動詞', pos1='自立'),
+                  Morph(surface='た', base='た', pos='助動詞', pos1='*'),
+                  Morph(surface='か', base='か', pos='助詞', pos1='副助詞')]
+        particles = Chunk(morphs).extract_particles()
+        self.assertEqual(particles, ['か'])
+
+    def test_two_particles_in_phrase(self):
+        morphs = [Morph(surface='書生', base='書生', pos='名詞', pos1='一般'),
+                  Morph(surface='という', base='という', pos='助詞', pos1='格助詞'),
+                  Morph(surface='の', base='の', pos='名詞', pos1='非自立'),
+                  Morph(surface='は', base='は', pos='助詞', pos1='係助詞')]
+        particles = Chunk(morphs).extract_particles()
+        self.assertEqual(particles, ['という', 'は'])
+
 if __name__ == '__main__':
     unittest.main()
