@@ -3,12 +3,6 @@ from neko2 import Morph, Chunk, extract_case_patterns
 
 
 class TestExtractPredicate(unittest.TestCase):
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_no_verbs_in_phrase(self):
         morphs = [Morph(surface='我輩', base='我輩', pos='名詞', pos1='代名詞'),
                   Morph(surface='は', base='は', pos='助詞', pos1='係助詞')]
