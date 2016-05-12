@@ -153,8 +153,8 @@ def extract_case_patterns(sentence: List[Chunk]) -> List[str]:
         predicate = chunk.extract_verb()
         if predicate:
             cases = []
-            for src in chunk.srcs:
-                cases.extend(sentence[src].extract_particles())
+            for src_index in chunk.srcs:
+                cases.extend(sentence[src_index].extract_particles())
             if cases:
                 case_patterns.append('\t'.join([predicate, ' '.join(cases)]))
     return case_patterns
