@@ -25,7 +25,7 @@ class TestExtractCaseFrames(unittest.TestCase):
         self.assertEqual(case_frames, ['見る\tを\tものを'])
 
     def test_one_verb_two_particles_in_sentence(self):
-        chunk0 = Chunk([Morph(surface='我輩', base='我輩', pos='名詞', pos1='代名詞'),
+        chunk0 = Chunk([Morph(surface='吾輩', base='吾輩', pos='名詞', pos1='代名詞'),
                         Morph(surface='は', base='は', pos='助詞', pos1='係助詞')],
                        dst=2)
         chunk1 = Chunk([Morph(surface='もの', base='もの', pos='名詞', pos1='非自立'),
@@ -39,7 +39,7 @@ class TestExtractCaseFrames(unittest.TestCase):
         self.assertEqual(case_frames, ['見る\tは を\t吾輩は ものを'])
 
     def test_two_case_frames_in_sentence(self):
-        chunk0 = Chunk([Morph(surface='我輩', base='我輩', pos='名詞', pos1='代名詞'),
+        chunk0 = Chunk([Morph(surface='吾輩', base='吾輩', pos='名詞', pos1='代名詞'),
                         Morph(surface='は', base='は', pos='助詞', pos1='係助詞')],
                        dst=5)
         chunk1 = Chunk([Morph(surface='ここ', base='ここ', pos='名詞', pos1='代名詞'),
