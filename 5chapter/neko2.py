@@ -160,6 +160,31 @@ def extract_case_patterns(sentence: List[Chunk]) -> List[str]:
     return case_patterns
 
 
+def extract_case_frames(sentence: List[Chunk]) -> List[str]:
+    """文節のリストから述語と格と項の組を抽出し返す。
+    述語と格と項はタブ文字で区切る。
+    格および項が複数ある場合はスペースで区切る。
+    文節のリストに述語と格の甲の組が存在しな場合は空リストを返す。
+    :param sentence: List[Chunk]
+    :rtype: List[str]
+    """
+    case_frames = []
+    for chunk in sentence:
+        predicate = chunk.extract_verb()
+        if predicate:
+            cases = []
+            phrases = []
+            for src_index in chunk.srcs:
+                src = sentence[src_index]
+                particles = src.extract_particles()
+                if particles:
+                    cases.extend(particles)
+                    phrases.append(src.surface())
+            if cases:
+                case_frames.append('\t'.join([predicate, ' '.join(cases), ' '.join(phrases)]))
+    return case_frames
+
+
 def __read_and_make_sentences(file):
     with open(file, 'r', encoding='utf-8') as f:
         sentence = []
