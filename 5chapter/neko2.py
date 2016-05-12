@@ -144,7 +144,7 @@ def extract_case_patterns(sentence: List[Chunk]) -> List[str]:
     """文節のリストから述語と格の組を抽出し返す。
     述語と格はタブ文字で区切る。
     格が複数ある場合はスペースで区切る。
-    文節のリストに述語と格の組が存在しな場合は空リストを返す。
+    文節のリストに述語と格の組が存在しない場合は空リストを返す。
     :param sentence: List[Chunk]
     :rtype: List[str]
     """
@@ -164,7 +164,7 @@ def extract_case_frames(sentence: List[Chunk]) -> List[str]:
     """文節のリストから述語と格と項の組を抽出し返す。
     述語と格と項はタブ文字で区切る。
     格および項が複数ある場合はスペースで区切る。
-    文節のリストに述語と格の甲の組が存在しな場合は空リストを返す。
+    文節のリストに述語と格と項の組が存在しない場合は空リストを返す。
     :param sentence: List[Chunk]
     :rtype: List[str]
     """
