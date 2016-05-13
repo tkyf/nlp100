@@ -29,23 +29,23 @@ class TestExtractParticles(unittest.TestCase):
     def test_no_particles_in_phrase(self):
         morphs = [Morph(surface='見た', base='見る', pos='動詞', pos1='自立'),
                   Morph(surface='た', base='た', pos='助動詞', pos1='*')]
-        particles = Chunk(morphs).extract_particles()
-        self.assertEqual(particles, [])
+        particle = Chunk(morphs).extract_last_particle()
+        self.assertEqual(particle, '')
 
     def test_one_particle_in_phrase(self):
         morphs = [Morph(surface='生れ', base='生れる', pos='動詞', pos1='自立'),
                   Morph(surface='た', base='た', pos='助動詞', pos1='*'),
                   Morph(surface='か', base='か', pos='助詞', pos1='副助詞')]
-        particles = Chunk(morphs).extract_particles()
-        self.assertEqual(particles, ['か'])
+        particle = Chunk(morphs).extract_last_particle()
+        self.assertEqual(particle, 'か')
 
     def test_two_particles_in_phrase(self):
         morphs = [Morph(surface='書生', base='書生', pos='名詞', pos1='一般'),
                   Morph(surface='という', base='という', pos='助詞', pos1='格助詞'),
                   Morph(surface='の', base='の', pos='名詞', pos1='非自立'),
                   Morph(surface='は', base='は', pos='助詞', pos1='係助詞')]
-        particles = Chunk(morphs).extract_particles()
-        self.assertEqual(particles, ['という', 'は'])
+        particle = Chunk(morphs).extract_last_particle()
+        self.assertEqual(particle, 'は')
 
 
 class TestExtractCasePatterns(unittest.TestCase):

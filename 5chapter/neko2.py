@@ -83,6 +83,17 @@ class Chunk:
         """
         return [morph.surface for morph in self.morphs if morph.pos == '助詞']
 
+    def extract_last_particle(self) -> str:
+        """与えられた文節から最右の助詞を取り出し返す。
+        助詞を含まない場合は空文字を返す。
+        :rtype: str
+        """
+        particles = self.extract_particles()
+        if particles:
+            return particles[-1]
+        else:
+            return ''
+
 
 def read_and_make_morphs():
     text = []
@@ -154,7 +165,7 @@ def extract_case_patterns(sentence: List[Chunk]) -> List[str]:
         if predicate:
             cases = []
             for src_index in chunk.srcs:
-                cases.extend(sentence[src_index].extract_particles())
+                cases.append(sentence[src_index].extract_last_particle())
             if cases:
                 case_patterns.append('\t'.join([predicate, ' '.join(cases)]))
     return case_patterns
@@ -176,9 +187,9 @@ def extract_case_frames(sentence: List[Chunk]) -> List[str]:
             phrases = []
             for src_index in chunk.srcs:
                 src = sentence[src_index]
-                particles = src.extract_particles()
-                if particles:
-                    cases.extend(particles)
+                particle = src.extract_last_particle()
+                if particle:
+                    cases.append(particle)
                     phrases.append(src.surface())
             if cases:
                 case_frames.append('\t'.join([predicate, ' '.join(cases), ' '.join(phrases)]))
