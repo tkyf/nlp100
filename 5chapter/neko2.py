@@ -67,7 +67,7 @@ class Chunk:
         return surface
 
     def extract_first_verb(self) -> str:
-        """与えられた文節から最左の動詞の基本形を取り出し返す。
+        """文節から最左の動詞の基本形を取り出し返す。
         動詞を含まない場合は空文字を返す。
         :rtype: str
         """
@@ -77,14 +77,14 @@ class Chunk:
         return ""
 
     def extract_particles(self) -> List[str]:
-        """与えられた文節から助詞を全て取り出し返す。
+        """文節から助詞を全て取り出し、リストにして返す。
         助詞を含まない場合は空リストを返す。
         :rtype: List[str]
         """
         return [morph.surface for morph in self.morphs if morph.pos == '助詞']
 
     def extract_last_particle(self) -> str:
-        """与えられた文節から最右の助詞を取り出し返す。
+        """文節から最右の助詞を取り出し返す。
         助詞を含まない場合は空文字を返す。
         :rtype: str
         """
