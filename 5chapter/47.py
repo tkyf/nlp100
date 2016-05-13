@@ -16,5 +16,10 @@ def main():
         if lvcs:
             print('\n'.join(lvcs))
 
+# ・コーパス中に頻出する述語
+# $ python 47.py > 47.txt
+# $ cut -f1 47.txt | sort | uniq -c | sort -r | head
+# ・コーパス中で頻出する述語と助詞パターン
+# $ cut -f1,2 47.txt | sort | uniq -c | sort -r | head
 if __name__ == '__main__':
     main()
