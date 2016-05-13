@@ -66,7 +66,7 @@ class Chunk:
             surface += morph.surface
         return surface
 
-    def extract_verb(self) -> str:
+    def extract_first_verb(self) -> str:
         """与えられた文節から最左の動詞の基本形を取り出し返す。
         動詞を含まない場合は空文字を返す。
         :rtype: str
@@ -150,7 +150,7 @@ def extract_case_patterns(sentence: List[Chunk]) -> List[str]:
     """
     case_patterns = []
     for chunk in sentence:
-        predicate = chunk.extract_verb()
+        predicate = chunk.extract_first_verb()
         if predicate:
             cases = []
             for src_index in chunk.srcs:
@@ -170,7 +170,7 @@ def extract_case_frames(sentence: List[Chunk]) -> List[str]:
     """
     case_frames = []
     for chunk in sentence:
-        predicate = chunk.extract_verb()
+        predicate = chunk.extract_first_verb()
         if predicate:
             cases = []
             phrases = []
