@@ -18,7 +18,7 @@ def main():
 
 # ・コーパス中に頻出する述語と各パターンの組み合わせ
 # $ python 45.py > 45.txt
-# $ sort 45.txt | uniq - c | sort - r | head
+# $ sort 45.txt | uniq -c | sort -r | head
 # ・「する」「見る」「与える」という動詞の各パターン
 # $ grep -E '^する[[:space:]]|^見る[[:space:]]|^与える[[:space:]]' 45.txt | sort | uniq -c | sort -r
 if __name__ == '__main__':
