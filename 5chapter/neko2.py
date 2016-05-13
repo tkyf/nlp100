@@ -102,9 +102,9 @@ class Chunk:
         """
         if len(self.morphs) < 2:
             return ''
-        for right, left in zip(self.morphs, self.morphs[1:]):
-            if right.pos1 == 'サ変接続' and left.surface == 'を' and left.pos == '助詞':
-                return right.surface + left.surface
+        for left, right in zip(self.morphs, self.morphs[1:]):
+            if left.pos1 == 'サ変接続' and right.surface == 'を' and right.pos == '助詞':
+                return left.surface + right.surface
         return ''
 
 
