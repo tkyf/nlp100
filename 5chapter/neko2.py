@@ -79,7 +79,7 @@ class Chunk:
     def extract_particles(self) -> List[str]:
         """与えられた文節から助詞を全て取り出し返す。
         助詞を含まない場合は空リストを返す。
-        :rtype: str
+        :rtype: List[str]
         """
         return [morph.surface for morph in self.morphs if morph.pos == '助詞']
 
