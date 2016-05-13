@@ -94,6 +94,19 @@ class Chunk:
         else:
             return ''
 
+    def extract_sahen(self) -> str:
+        """文節が「サ変接続名詞＋を（助詞）で構成された部分を含む場合、
+        それを返す。
+        含まない場合、空文字を返す
+        :return: str
+        """
+        if len(self.morphs) < 2:
+            return ''
+        for right, left in zip(self.morphs, self.morphs[1:]):
+            if right.pos1 == 'サ変接続' and left.surface == 'を' and left.pos == '助詞':
+                return right.surface + left.surface
+        return ''
+
 
 def read_and_make_morphs():
     text = []
@@ -194,6 +207,34 @@ def extract_case_frames(sentence: List[Chunk]) -> List[str]:
             if cases:
                 case_frames.append('\t'.join([predicate, ' '.join(cases), ' '.join(phrases)]))
     return case_frames
+
+
+def extract_LVCs(sentence: List[Chunk]) -> List[str]:
+    """文節のリストからサ変接続名詞＋を（助詞）で構成される文節が動詞に係るパターンを抽出し返す。
+    述語と格と項はタブ文字で区切る。
+    格および項が複数ある場合はスペースで区切る。
+    文節のリストに述語と格と項の組が存在しない場合は空リストを返す。
+    :param sentence: List[Chunk]
+    :rtype: List[str]
+    """
+    lvcs = []
+    for chunk in sentence:
+        predicate = chunk.extract_first_verb()
+        if predicate:
+            case_and_phrases = []  # （助詞, 文節）のリスト
+            sahen = ''
+            for src_index in chunk.srcs:
+                src = sentence[src_index]
+                particle = src.extract_last_particle()
+                sahen = src.extract_sahen()
+                if particle and not sahen:
+                    case_and_phrases.append((particle, src.surface()))
+            if case_and_phrases and sahen:
+                sorted_case_and_phrases = sorted(case_and_phrases)
+                cases = [e[0] for e in sorted_case_and_phrases]
+                phrases = [e[1] for e in sorted_case_and_phrases]
+                lvcs.append('\t'.join([sahen + predicate, ' '.join(cases), ' '.join(phrases)]))
+    return lvcs
 
 
 def __read_and_make_sentences(file):
