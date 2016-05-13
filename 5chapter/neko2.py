@@ -61,10 +61,7 @@ class Chunk:
         return len(self.morphs) == 1 and not self.morphs[0].surface
 
     def surface(self) -> str:
-        surface = ''
-        for morph in self.morphs:
-            surface += morph.surface
-        return surface
+        return ''.join([morph.surface for morph in self.morphs])
 
     def extract_first_verb(self) -> str:
         """文節から最左の動詞の基本形を取り出し返す。
